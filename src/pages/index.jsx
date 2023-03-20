@@ -59,11 +59,12 @@ export default function Home({products}) {
                             products.map((item)=>{
                               if(item.isFeatured == true){
                                 return(
-                                <SwiperSlide>
+                                <SwiperSlide key={item.slug.current}>
                                   <ProductCard key={item.slug.current}
                                   name={item.name}
                                   brand={item.brand}
                                   price={item.price}
+                                  slug={item.slug.current}
                                   img={urlFor(item.cover_image).width(1000).url()}
                                   />
                                 </SwiperSlide>
@@ -94,11 +95,12 @@ export default function Home({products}) {
                           products.map((item)=>{
                              if(item.isFeatured == true){
                               return(
-                              <SwiperSlide className=''>
+                              <SwiperSlide className='' key={item.slug.current}>
                                 <ProductCard key={item.slug.current}
                                 name={item.name}
                                 brand={item.brand}
                                 price={item.price}
+                                slug={item.slug.current}
                                 img={urlFor(item.cover_image).width(1000).url()}
                                 />
                               </SwiperSlide>
@@ -129,11 +131,12 @@ export default function Home({products}) {
                           products.map((item)=>{
                              if(item.isFeatured == true){
                               return(
-                              <SwiperSlide className=''>
+                              <SwiperSlide className='' key={item.slug.current}>
                                 <ProductCard key={item.slug.current}
                                 name={item.name}
                                 brand={item.brand}
                                 price={item.price}
+                                slug={item.slug.current}
                                 img={urlFor(item.cover_image).width(1000).url()}
                                 />
                               </SwiperSlide>
@@ -180,11 +183,12 @@ export default function Home({products}) {
                             products.map((item)=>{
                               if(item.brand == "Hackett"){
                                 return(
-                                <SwiperSlide>
+                                <SwiperSlide key={item.slug.current}>
                                   <ProductCard key={item.slug.current}
                                   name={item.name}
                                   brand={item.brand}
                                   price={item.price}
+                                  slug={item.slug.current}
                                   img={urlFor(item.cover_image).width(1000).url()}
                                   />
                                 </SwiperSlide>
@@ -215,11 +219,12 @@ export default function Home({products}) {
                           products.map((item)=>{
                              if(item.brand == "Hackett"){
                               return(
-                              <SwiperSlide className=''>
+                              <SwiperSlide className='' key={item.slug.current}>
                                 <ProductCard key={item.slug.current}
                                 name={item.name}
                                 brand={item.brand}
                                 price={item.price}
+                                slug={item.slug.current}
                                 img={urlFor(item.cover_image).width(1000).url()}
                                 />
                               </SwiperSlide>
@@ -250,11 +255,12 @@ export default function Home({products}) {
                           products.map((item)=>{
                              if(item.brand == "Hackett"){
                               return(
-                              <SwiperSlide className=''>
+                              <SwiperSlide className='' key={item.slug.current}>
                                 <ProductCard key={item.slug.current}
                                 name={item.name}
                                 brand={item.brand}
                                 price={item.price}
+                                slug={item.slug.current}
                                 img={urlFor(item.cover_image).width(1000).url()}
                                 />
                               </SwiperSlide>
