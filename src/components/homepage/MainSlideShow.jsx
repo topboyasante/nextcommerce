@@ -50,7 +50,7 @@ function MainSlideShow() {
                     bgImages.map((item)=>{
                         return(
                             <SwiperSlide className='w-screen h-full' key={item.id}>
-                                <section className='w-screen h-[70vh] relative'>
+                                <section className='w-screen h-[80vh] relative'>
                                     <img src={item.img} alt={item.id} className='w-full h-full object-cover '/>
                                     <div className='w-full h-full absolute top-0 left-0 bg-black opacity-50'></div>
                                     <section className='absolute bottom-0 left-0 p-5 text-white'>
