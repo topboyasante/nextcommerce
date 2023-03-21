@@ -16,8 +16,11 @@ import SizeList from '@/components/products/SizeList';
 
 function index({product}) {
   const cart = useBearStore((state)=>state.cart.items)
+  const addItemToCart = useBearStore((state)=>state.addItemToCart)
+  const increaseItem = useBearStore((state)=>state.increaseItem)
+  const reduceItem = useBearStore((state)=>state.reduceItem)
 
-
+ 
     //Slideshow States
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
@@ -30,8 +33,21 @@ function index({product}) {
         id:product.slug.current,
         name:product.name,
         price:product.price,
+        qtyInCart:product.qtyInCart,
+        totalAmount:product.totalAmount
       }
     
+    function addToCart (){
+        addItemToCart(newItemToBeAdded)
+    }
+    function increaseItemInCart(){
+        increaseItem(newItemToBeAdded)
+    }
+    function reduceItemInCart(){
+        reduceItem(newItemToBeAdded)
+    }
+
+
   return (
     <>
         <Head>
@@ -97,9 +113,9 @@ function index({product}) {
 
                         {/* Counter */}
                         <div className='flex gap-3 justify-center items-center w-[100px] my-3'>
-                                <button className='bg-black text-white w-[30%] text-xl hover:scale-105 ease duration-500'>-</button>
-                                <p className='text-center w-[40%] text-xl'>{0}</p>
-                                <button className='bg-black text-white w-[30%] text-xl hover:scale-105 ease duration-500'>+</button>
+                                <button className='bg-black text-white w-[30%] text-xl hover:scale-105 ease duration-500' onClick={reduceItemInCart}>-</button>
+                                <p className='text-center w-[40%] text-xl'>{product.qtyInCart}</p>
+                                <button className='bg-black text-white w-[30%] text-xl hover:scale-105 ease duration-500' onClick={increaseItemInCart}>+</button>
                         </div>
 
                         <section>
@@ -108,7 +124,7 @@ function index({product}) {
                         </section>
 
                         <button className='border w-full text-center py-2 uppercase my-3 hover:scale-105 ease duration-500'>Checkout</button>
-                        <button className='bg-black text-white w-full text-center py-2 uppercase my-3 hover:scale-105 ease duration-500' >Add To Cart</button>
+                        <button className='bg-black text-white w-full text-center py-2 uppercase my-3 hover:scale-105 ease duration-500' onClick={addToCart} >Add To Cart</button>
                     </section>
                 </section>
             </section>
