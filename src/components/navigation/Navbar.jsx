@@ -41,6 +41,20 @@ function Navbar() {
                  <section className='border border-black text-clash py-2'>
                     <p className='text-center uppercase font-semibold text-xl'>Your Cart :</p>
                  </section>
+                 <section>
+                  {
+                    cart.map((item)=>{
+                      return(
+                        <section className='border border-black text-clash my-2 p-5' key={item.id}>
+                          <section className="flex justify-between items-center">
+                            <p>{item.name}</p>
+                            <p>$ {item.price}</p>
+                          </section>
+                        </section>
+                      )
+                    })
+                  }
+                 </section>
               </div>
           </section>
     </>
