@@ -42,7 +42,7 @@ function Navbar() {
                     <p className='text-center uppercase font-semibold text-xl'>Your Cart :</p>
                  </section>
                  <section>
-                  {
+                  {cart.length > 0?
                     cart.map((item)=>{
                       return(
                         <section className='border border-black text-clash my-2 p-5' key={item.id}>
@@ -53,6 +53,8 @@ function Navbar() {
                         </section>
                       )
                     })
+                    :
+                    <p className='text-clash uppercase my-5 text-center lg:text-3xl font-semibold'>your cart is empty.</p>
                   }
                  </section>
               </div>
