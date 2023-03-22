@@ -14,6 +14,10 @@ import "swiper/css/thumbs";
 import { useBearStore } from '../../../zustand/Store';
 import SizeList from '@/components/products/SizeList';
 
+//React Toastify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function index({product}) {
   const cart = useBearStore((state)=>state.cart.items)
   const addItemToCart = useBearStore((state)=>state.addItemToCart)
@@ -39,9 +43,19 @@ function index({product}) {
     
     function addToCart (){
         addItemToCart(newItemToBeAdded)
+        toast.success(`${product.name} was added to your cart.`, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
     }
     function increaseItemInCart(){
-        increaseItem(newItemToBeAdded)
+        increaseItem(product.qtyInCart)
     }
     function reduceItemInCart(){
         reduceItem(newItemToBeAdded)
@@ -127,6 +141,9 @@ function index({product}) {
                     </section>
                 </section>
             </section>
+            <div className="text-clash">
+            <ToastContainer/>
+            </div>
         </main>
     </>
   )

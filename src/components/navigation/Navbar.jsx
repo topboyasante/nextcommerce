@@ -48,7 +48,10 @@ function Navbar() {
                         <section className='border border-black text-clash my-2 p-5' key={item.id}>
                           <section className="flex justify-between items-center">
                             <p>{item.name}</p>
-                            <p>$ {item.price}</p>
+                            <p>$ {item.price * item.qtyInCart}</p>
+                          </section>
+                          <section>
+                            <p>Quantity : {item.qtyInCart}</p>
                           </section>
                         </section>
                       )

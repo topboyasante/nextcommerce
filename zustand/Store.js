@@ -1,8 +1,9 @@
 import { create } from "zustand";
+import {persist,createJSONStorage} from 'zustand/middleware'
 
 
-
-export const useBearStore = create((set)=>({
+export const useBearStore = create(
+  (set)=>({
     cart:{
         items:[
         ]
@@ -33,6 +34,7 @@ export const useBearStore = create((set)=>({
         console.log('test')
       },
       increaseItem: (payload) => {
-        console.log('test')
+        payload++
       },
-}))
+})
+)
