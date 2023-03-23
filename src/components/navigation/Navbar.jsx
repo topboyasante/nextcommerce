@@ -9,7 +9,10 @@ import Counter from '../products/Counter'
 
 function Navbar() {
   const cart = useBearStore((state)=>state.cart.items)
+
   const removeFromCart = useBearStore((state)=>state.removeFromCart)
+  const increaseItem = useBearStore((state)=>state.increaseItem)
+  const reduceItem = useBearStore((state)=>state.reduceItem)
 
 
   const [openCart,setOpenCart] = useState(false)
@@ -64,7 +67,7 @@ function Navbar() {
                           </section>
                           <br />
                           <section className='flex justify-between items-center'>
-                            <Counter qtyInCart={item.qtyInCart}></Counter>
+                            <Counter qtyInCart={item.qtyInCart} increaseItemInCart={()=>increaseItem(item)} reduceItemInCart={()=>reduceItem(item)} ></Counter>
                             <AiOutlineDelete size={30} className='cursor-pointer hover:scale-105 ease duration-300' onClick={()=> removeFromCart(item.id)}/>
                           </section>
                         </section>

@@ -29,9 +29,43 @@ export const useBearStore = create(
               }
         });
       },
+
       removeFromCart: (payload) =>
         set((state) => ({
           cart:{items: state.cart.items.filter((item) => item.id !== payload)},
       })),
+
+      reduceItem: (payload) => {
+        set((state) => {
+          const existingItem = state.cart.items.find((item) => item.id === payload.id);
+          if (existingItem.qtyInCart === 1) {
+            return {
+              ...state,
+              cart: {items:state.cart.items.filter((item) => item.id !== payload.id)},
+            };
+          } else {
+            existingItem.qtyInCart--;
+            console.log(existingItem.qtyInCart)
+            existingItem.totalPrice -= payload.price;
+            return { ...state };
+          }
+        });
+      },
+
+      increaseItem: (payload) => {
+        set((state) => {
+          const existingItem = state.cart.items.find((item) => item.id === payload.id);
+          if (existingItem) {
+            existingItem.qtyInCart++;
+            console.log(existingItem.qtyInCart)
+            existingItem.totalPrice += payload.price;
+            return { ...state };
+          } else {
+            return { ...state, cart: {item:[...state.cart.items, payload]} };
+          }
+        });
+      },
+
+      clearCart: () => set({ cart: {items:[]} }),
 })
 )
