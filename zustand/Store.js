@@ -29,12 +29,9 @@ export const useBearStore = create(
               }
         });
       },
-
-      reduceItem: (payload) => {
-        console.log('test')
-      },
-      increaseItem: (payload) => {
-        payload++
-      },
+      removeFromCart: (payload) =>
+        set((state) => ({
+          cart:{items: state.cart.items.filter((item) => item.id !== payload)},
+      })),
 })
 )

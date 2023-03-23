@@ -30,12 +30,12 @@ function SizeList() {
     ]
   return (
     <main>
-        <section className='my-2 border border-black p-3 flex gap-5'>
+        <section className='my-2 border border-black p-3 flex justify-center items-center gap-5'>
             {sizes.map((item)=>{
                 return(
                     <div className="flex items-center " key={item.id}>
                         <input id="default-radio-1" type="radio" value={item.name} name="default-radio" className="w-4 h-4 bg-gray-100 border-gray-300 focus:bg-red-500 ring-offset-black focus:ring-black  focus:ring-2 rounded-full outline-none appearance-none ease duration-300"/>
-                        <label htmlFor="default-radio-1" className="ml-2 font-medium text-black lg:text-xl">{item.name}</label>
+                        <label htmlFor="default-radio-1" className="ml-2 font-medium text-black text-[0.8rem] md:text-xl">{item.name}</label>
                     </div>
                 )
             })}

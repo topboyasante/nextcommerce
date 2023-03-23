@@ -44,7 +44,7 @@ function index({product}) {
     function addToCart (){
         addItemToCart(newItemToBeAdded)
         toast.success(`${product.name} was added to your cart.`, {
-          position: "top-right",
+          position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -124,12 +124,7 @@ function index({product}) {
                         <hr className='my-3 border-black' />
                         <p>{product.details}</p>
 
-                        {/* Counter */}
-                        <div className='flex gap-3 justify-center items-center w-[100px] my-3'>
-                                <button className='bg-black text-white w-[30%] text-xl hover:scale-105 ease duration-500' onClick={reduceItemInCart}>-</button>
-                                <p className='text-center w-[40%] text-xl'>{product.qtyInCart}</p>
-                                <button className='bg-black text-white w-[30%] text-xl hover:scale-105 ease duration-500' onClick={increaseItemInCart}>+</button>
-                        </div>
+                        
 
                         <section>
                             <p className='font-semibold lg:text-2xl uppercase'>sizes:</p>
