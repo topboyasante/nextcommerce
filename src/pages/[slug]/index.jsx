@@ -73,7 +73,7 @@ function index({product}) {
         <main className='pt-[18vh] text-clash'>
             <section className='w-full p-5'>
                 <section className='flex flex-col lg:flex-row justify-between items-center gap-5'>
-                    <section className='w-full lg:w-[45%] border border-black p-3'>
+                    <section className='w-full lg:w-[40%] border border-black p-3'>
                     <Swiper
                         style={{
                           "--swiper-navigation-color": "#fff",
@@ -89,7 +89,7 @@ function index({product}) {
                           product.image.map((item)=>{
                             return(
                               <SwiperSlide key={item._key}>
-                                <img src={urlFor(item.asset).width(350).url()} alt={`house`} className=' mx-auto'/>
+                                <img src={urlFor(item.asset).width(300).url()} alt={`house`} className=' mx-auto'/>
                               </SwiperSlide>
                             )
                           })
@@ -109,7 +109,7 @@ function index({product}) {
                         product.image.map((item)=>{
                           return(
                             <SwiperSlide key={item._key}>
-                            <img src={urlFor(item.asset).width(150).url()} alt={`house`} className='w-full '/>
+                            <img src={urlFor(item.asset).width(100).url()} alt={`house`} className='w-full'/>
                             </SwiperSlide>
                           )
                         })

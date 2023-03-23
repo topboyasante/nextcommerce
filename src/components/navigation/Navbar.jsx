@@ -21,7 +21,10 @@ function Navbar() {
     setOpenCart(!openCart)
   }
  
-
+  let totalPrice =  0
+  cart.forEach((item)=>{
+    totalPrice += (item.price) * item.qtyInCart
+  })
 
   return (
       <>
@@ -55,6 +58,7 @@ function Navbar() {
                     <AiOutlineArrowRight size={30} onClick={toggleCart} className='cursor-pointer hover:scale-105 ease duration-300'/>
                    </section>
                  </section>
+                 <p className='border border-black w-full text-center py-2 uppercase my-3 text-clash font-semibold'>Total : $ {totalPrice}</p>
                  <section>
                   {
                   cart.length > 0?
@@ -67,7 +71,7 @@ function Navbar() {
                           </section>
                           <br />
                           <section className='flex justify-between items-center'>
-                            <Counter qtyInCart={item.qtyInCart} increaseItemInCart={()=>increaseItem(item)} reduceItemInCart={()=>reduceItem(item)} ></Counter>
+                            <Counter qtyInCart={item.qtyInCart} increaseItemInCart={()=>increaseItem(item)} reduceItemInCart={()=>reduceItem(item)}></Counter>
                             <AiOutlineDelete size={30} className='cursor-pointer hover:scale-105 ease duration-300' onClick={()=> removeFromCart(item.id)}/>
                           </section>
                         </section>
@@ -77,13 +81,13 @@ function Navbar() {
                    <section>
                      <p className='text-clash uppercase my-5 text-center lg:text-3xl font-semibold'>your cart is empty.</p>
                      <Link href={`/`}>
-                      <button className='border w-full text-center py-2 uppercase my-3 hover:scale-105 ease duration-500 text-clash'>Go Shopping</button>
+                      <button className='border w-full text-center py-2 uppercase my-3 hover:scale-95 ease duration-500 text-clash'>Go Shopping</button>
                      </Link>
                    </section>
                   }
                  </section>
                  <section>
-                 <button className='border border-black w-full text-center py-2 uppercase my-3 hover:scale-105 ease duration-500 text-clash'>Checkout</button>
+                 <button className='border border-black bg-white w-full text-center py-2 uppercase my-3 hover:bg-black hover:text-white ease duration-500 text-clash'>Checkout</button>
                  </section>
               </div>
           </section>

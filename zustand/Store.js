@@ -45,7 +45,6 @@ export const useBearStore = create(
             };
           } else {
             existingItem.qtyInCart--;
-            console.log(existingItem.qtyInCart)
             existingItem.totalPrice -= payload.price;
             return { ...state };
           }
@@ -57,7 +56,6 @@ export const useBearStore = create(
           const existingItem = state.cart.items.find((item) => item.id === payload.id);
           if (existingItem) {
             existingItem.qtyInCart++;
-            console.log(existingItem.qtyInCart)
             existingItem.totalPrice += payload.price;
             return { ...state };
           } else {
