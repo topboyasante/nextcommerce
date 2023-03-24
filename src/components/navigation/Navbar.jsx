@@ -13,6 +13,7 @@ function Navbar() {
   const removeFromCart = useBearStore((state)=>state.removeFromCart)
   const increaseItem = useBearStore((state)=>state.increaseItem)
   const reduceItem = useBearStore((state)=>state.reduceItem)
+  const clearCart = useBearStore((state)=>state.clearCart)
 
 
   const [openCart,setOpenCart] = useState(false)
@@ -54,7 +55,7 @@ function Navbar() {
                  <section className='border border-black text-clash p-2 flex justify-between items-center'>
                     <p className='text-center uppercase font-semibold text-xl'>Your Cart :</p>
                    <section className='flex items-center gap-5'>
-                    <AiOutlineDelete size={30} className='cursor-pointer hover:scale-105 ease duration-300'/>
+                    <AiOutlineDelete size={30} className='cursor-pointer hover:scale-105 ease duration-300' onClick={()=>clearCart()}/>
                     <AiOutlineArrowRight size={30} onClick={toggleCart} className='cursor-pointer hover:scale-105 ease duration-300'/>
                    </section>
                  </section>
