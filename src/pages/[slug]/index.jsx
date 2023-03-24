@@ -21,8 +21,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function index({product}) {
   const cart = useBearStore((state)=>state.cart.items)
   const addItemToCart = useBearStore((state)=>state.addItemToCart)
-  const increaseItem = useBearStore((state)=>state.increaseItem)
-  const reduceItem = useBearStore((state)=>state.reduceItem)
+  const addItemToWishList = useBearStore((state)=>state.addItemToWishList)
 
  
     //Slideshow States
@@ -54,13 +53,19 @@ function index({product}) {
           theme: "light",
           });
     }
-    function increaseItemInCart(){
-        increaseItem(product.qtyInCart)
+    function addToWishList (){
+        addItemToWishList(newItemToBeAdded)
+        toast.success(`${product.name} was added to your Wishlist.`, {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
     }
-    function reduceItemInCart(){
-        reduceItem(newItemToBeAdded)
-    }
-
 
   return (
     <>
@@ -116,7 +121,7 @@ function index({product}) {
                        }
                       </Swiper>
                     </section>
-                    <section className='container lg:w-[50%]'>
+                    <section className='container lg:w-[55%]'>
                         <div className='flex justify-between font-semibold lg:text-2xl'>
                             <p>{product.name}</p>
                             <p>$ {product.price}</p>
@@ -131,8 +136,10 @@ function index({product}) {
                             <SizeList/>
                         </section>
 
-                        <button className='border w-full text-center py-2 uppercase my-3 hover:scale-105 ease duration-500'>Checkout</button>
-                        <button className='bg-black text-white w-full text-center py-2 uppercase my-3 hover:scale-105 ease duration-500' onClick={addToCart} >Add To Cart</button>
+                       <section className='w-full flex justify-between items-center gap-5'>
+                          <button className='border w-[45%] text-center py-2 uppercase my-3 hover:scale-105 ease duration-500' onClick={addToWishList}>Add To Wishlist</button>
+                          <button className='bg-black text-white w-[45%] text-center py-2 uppercase my-3 hover:scale-105 ease duration-500' onClick={addToCart} >Add To Cart</button>
+                       </section>
                     </section>
                 </section>
             </section>

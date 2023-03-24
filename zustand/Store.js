@@ -11,6 +11,9 @@ export const useBearStore = create(
     products:{
         items: []
     },
+    wishlist:{
+        items:[]
+    },
     //Functions
 
         addItemToCart: (payload) => {
@@ -30,9 +33,29 @@ export const useBearStore = create(
         });
       },
 
+        addItemToWishList: (payload) => {
+            set((state) => {
+              /* Check the cart, and look for an item which has the same ID as the new Item's ID. */
+              const existingItem = state.wishlist.items.find((item) => item.id === payload.id);
+              /* If there's an element of that sort, increase the element's qtyInCart property, and its price property */
+              if (existingItem) {
+                return { wishlist: { items: [...state.wishlist.items] } };
+              }
+              /* If there's no element of that sort, add the new element to the cart (action.payload) */
+              else {
+                return { wishlist: { items: [...state.wishlist.items, payload] } };
+              }
+        });
+      },
+
       removeFromCart: (payload) =>
         set((state) => ({
           cart:{items: state.cart.items.filter((item) => item.id !== payload)},
+      })),
+
+      removeFromWishList: (payload) =>
+        set((state) => ({
+          wishlist:{items: state.wishlist.items.filter((item) => item.id !== payload)},
       })),
 
       reduceItem: (payload) => {

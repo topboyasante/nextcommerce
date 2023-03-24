@@ -2,13 +2,15 @@ import React, { useState } from 'react'
 import SearchBar from './SearchBar'
 
 import {FiShoppingBag} from 'react-icons/fi'
-import {AiOutlineArrowRight,AiOutlineDelete} from 'react-icons/ai'
+import {AiOutlineArrowRight,AiOutlineDelete,AiOutlineHeart} from 'react-icons/ai'
 import { useBearStore } from '../../../zustand/Store'
 import Link from 'next/link'
 import Counter from '../products/Counter'
 
 function Navbar() {
   const cart = useBearStore((state)=>state.cart.items)
+  const wishlist = useBearStore((state)=>state.wishlist.items)
+  
 
   const removeFromCart = useBearStore((state)=>state.removeFromCart)
   const increaseItem = useBearStore((state)=>state.increaseItem)
@@ -38,6 +40,14 @@ function Navbar() {
               </Link>
               <section className='flex items-center gap-5'>
                   <SearchBar/>
+                  
+                  <Link href={`/wishlist`}>
+                    <button type="button" className="relative inline-flex items-center p-3 text-sm font-medium text-center hover:scale-105 ease duration-500">
+                      <AiOutlineHeart size={30}/>
+                      <div className="text-clash absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-black p-3 rounded-full -top-2 -right-2">{wishlist.length}</div>
+                    </button>
+                  </Link>
+
                   <button type="button" className="relative inline-flex items-center p-3 text-sm font-medium text-center hover:scale-105 ease duration-500" onClick={toggleCart}>
                     <FiShoppingBag size={30}/>
                     <div className="text-clash absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-black p-3 rounded-full -top-2 -right-2">{cart.length}</div>
