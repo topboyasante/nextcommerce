@@ -107,11 +107,11 @@ function Navbar() {
               <p onClick={()=>setOpenBrands(!openBrands)} className='cursor-pointer'>Shop By Brands</p>
           </section>
           <section className={openBrands?'opacity-100 p-5 grid grid-cols-3 lg:grid-cols-5 place-items-center gap-3 text-clash bg-white ease duration-500'
-          :'opacity-0 p-5 grid grid-cols-3 lg:grid-cols-5 place-items-center gap-3 text-clash bg-white ease duration-500'}>
+          :'opacity-0 p-5 grid grid-cols-3 lg:grid-cols-5 place-items-center gap-3 text-clash bg-white ease duration-500'} onClick={()=>setOpenBrands(!openBrands)}>
           {
                 brands.map((item)=>{
                   return(
-                    <Link href={`/brands/${item.name}`}>
+                    <Link href={`/brands/${item.name}`} onClick={()=>setOpenBrands(!openBrands)}>
                       <p className='text-sm lg:text-lg'>{item.name}</p>
                     </Link>
                   )
