@@ -29,7 +29,7 @@ function index({product}) {
                   name={item.name}
                   brand={item.brand}
                   price={item.price}
-                  slug={`/${item.slug.current}`}
+                  slug={`/product/${item.slug.current}`}
                   img={urlFor(item.cover_image).width(1000).url()}
                   />
                 )
