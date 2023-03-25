@@ -20,7 +20,7 @@ function index({product}) {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main className='pt-[20vh] text-clash'>
+        <main className='pt-[12vh] text-clash'>
           <section className='grid grid-cols-3 p-5'>
             {
               product.map((item)=>{

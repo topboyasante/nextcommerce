@@ -78,7 +78,7 @@ function index({product}) {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main className='pt-[20vh] text-clash'>
+        <main className='pt-[12vh] text-clash'>
             <section className='w-full p-5'>
                 <section className='flex flex-col lg:flex-row justify-between items-center gap-5'>
                     <section className='w-full lg:w-[40%] p-3 grid grid-cols-2 gap-2'>

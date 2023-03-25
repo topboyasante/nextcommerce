@@ -6,7 +6,7 @@ function ProductCard({img,name,price,brand,slug}) {
 
   return (
     <Link href={slug}>
-      <main className='border border-black hover:scale-95 ease duration-500 bg-white p-5'>
+      <main className='border border-black hover:scale-95 ease duration-500 bg-white p-5 w-[200px] md:w-[200px] lg:w-[250px] xl:w-[300px] mx-auto'>
           <img src={img} alt={name} className='w-full mx-auto'/>
           <hr className='my-5' />
             <section className='text-clash text-center'>

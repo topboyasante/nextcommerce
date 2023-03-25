@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import SearchBar from './SearchBar'
 
 import {FiShoppingBag} from 'react-icons/fi'
+import {CgMenuGridR} from 'react-icons/cg'
 import {AiOutlineArrowRight,AiOutlineDelete,AiOutlineHeart} from 'react-icons/ai'
 import { useBearStore } from '../../../zustand/Store'
 import Link from 'next/link'
@@ -67,18 +68,22 @@ function Navbar() {
       id:3,
       name:'Gucci'
     },
+    {
+      id:4,
+      name:'Amiri'
+    },
   ]
 
   return (
       <>
-        <nav className='fixed w-full border-b border-b-black  bg-white z-50 h-[23vh] md:h-[20vh]'>
+        <nav className='fixed w-full border-b border-b-black  bg-white z-50 lg:h-[13vh]'>
           <div className='p-2 text-center text-clash uppercase text-bold bg-black text-white'>Worldwide Shipping Available.</div>
           <section className='flex flex-col md:flex-row justify-between items-center p-5'>
               {/* Logo */}
               <Link href={`/`}>
                   <p className='text-clash font-bold text-2xl'>nextcommerce</p>
               </Link>
-              <section className='flex items-center gap-5'>
+              <section className='flex items-center gap-8'>
                   <SearchBar/>
                   
                   <Link href={`/wishlist`}>
@@ -92,34 +97,13 @@ function Navbar() {
                     <FiShoppingBag size={30}/>
                     <div className="text-clash absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-black p-3 rounded-full -top-2 -right-2">{cart.length}</div>
                 </button>
+
+                  <CgMenuGridR size={30} onClick={()=>setOpenBrands(!openBrands)} className='hover:scale-105 ease duration-500'/>
               </section>
-          </section>
-          <section className='px-5 flex justify-around items-center text-clash'>
-              {
-                links.map((item)=>{
-                  return(
-                    <Link href={`/${item.name}`} key={item.id} className='cursor-pointer'>
-                      <p>{item.name}</p>
-                    </Link>
-                  )
-                })
-              }
-              <p onClick={()=>setOpenBrands(!openBrands)} className='cursor-pointer'>Shop By Brands</p>
-          </section>
-          <section className={openBrands?'opacity-100 p-5 grid grid-cols-3 lg:grid-cols-5 place-items-center gap-3 text-clash bg-white ease duration-500'
-          :'opacity-0 p-5 grid grid-cols-3 lg:grid-cols-5 place-items-center gap-3 text-clash bg-white ease duration-500'} onClick={()=>setOpenBrands(!openBrands)}>
-          {
-                brands.map((item)=>{
-                  return(
-                    <Link href={`/brands/${item.name}`} onClick={()=>setOpenBrands(!openBrands)}>
-                      <p className='text-sm lg:text-lg'>{item.name}</p>
-                    </Link>
-                  )
-                })
-              }
           </section>
         </nav>
 
+          {/* cart */}
           <section className='relative'>
               <div className={openCart?"fixed top-0 left-0 w-screen h-full bg-black opacity-90 z-[60] ease duration-500":
             "fixed top-0 left-[-100vw] w-screen h-full bg-black opacity-90 z-[60] ease duration-500"} 
@@ -167,6 +151,56 @@ function Navbar() {
                  <section>
                  <button className='border border-black bg-white w-full text-center py-2 uppercase my-3 hover:bg-black hover:text-white ease duration-500 text-clash'>Checkout</button>
                  </section>
+              </div>
+          </section>
+
+          {/* Navbar extension */}
+          <section className='relative'>
+              <div className={openBrands?"fixed top-0 left-0 w-screen h-full bg-black opacity-90 z-[60] ease duration-500":
+            "fixed top-0 left-[-100vw] w-screen h-full bg-black opacity-90 z-[60] ease duration-500"} 
+            onClick={()=>setOpenBrands(!openBrands)}></div>
+              <div className={openBrands?"fixed top-0 right-0 w-full lg:w-[50%] h-screen bg-white text-black z-[60] ease duration-500 p-5":
+            "fixed top-0 right-[-100vw] w-[80%] lg:w-[50%] h-screen bg-white text-black z-[60] ease duration-500 p-5"}
+            onClick={()=>setOpenBrands(!openBrands)}>
+                
+                <section className='border border-black text-clash p-2 flex justify-between items-center'>
+                    <p className='text-center uppercase font-semibold text-xl'>Menu</p>
+                   <section className='flex items-center gap-5'>
+                    <AiOutlineArrowRight size={30} onClick={()=>setOpenBrands(!openBrands)} className='cursor-pointer hover:scale-105 ease duration-300'/>
+                   </section>
+                </section>
+                <section className='text-clash my-5'>
+                  <h1 className=''>Categories:</h1>
+                  <hr  className='my-3 border-black'/>
+                  <section className='grid grid-cols-5'>
+                    {
+                      links.map((item)=>{
+                        return(
+                          <Link href={`/${item.name}`} key={item.id} className='cursor-pointer'>
+                          <p>{item.name}</p>
+                        </Link>
+                        )
+                      })
+                    }
+                  </section>
+                </section>
+
+                <section className='text-clash my-5'>
+                  <h1 className=''>Brands:</h1>
+                  <hr  className='my-3 border-black'/>
+                  <section className='grid grid-cols-5'>
+                    {
+                      brands.map((item)=>{
+                        return(
+                          <Link href={`/brands/${item.name}`} key={item.id} className='cursor-pointer'>
+                          <p>{item.name}</p>
+                        </Link>
+                        )
+                      })
+                    }
+                  </section>
+                </section>
+
               </div>
           </section>
     </>
