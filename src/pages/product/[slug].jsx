@@ -37,7 +37,8 @@ function index({product}) {
         name:product.name,
         price:product.price,
         qtyInCart:product.qtyInCart,
-        totalAmount:product.totalAmount
+        totalAmount:product.totalAmount,
+        brand:product.brand
       }
     
     function addToCart (){
@@ -67,6 +68,8 @@ function index({product}) {
           });
     }
 
+    const formattedPrice = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(product.price);
+
   return (
     <>
         <Head>
@@ -75,61 +78,27 @@ function index({product}) {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main className='pt-[18vh] text-clash'>
+        <main className='pt-[20vh] text-clash'>
             <section className='w-full p-5'>
                 <section className='flex flex-col lg:flex-row justify-between items-center gap-5'>
-                    <section className='w-full lg:w-[40%] border border-black p-3'>
-                    <Swiper
-                        style={{
-                          "--swiper-navigation-color": "#fff",
-                          "--swiper-pagination-color": "#fff",
-                        }}
-                        spaceBetween={10}
-                        navigation={true}
-                        thumbs={{swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null}}
-                        modules={[FreeMode, Navigation, Thumbs]}
-                        className="mySwiper2"
-                      >
-                        {
-                          product.image.map((item)=>{
-                            return(
-                              <SwiperSlide key={item._key}>
-                                <img src={urlFor(item.asset).width(300).url()} alt={`house`} className=' mx-auto'/>
-                              </SwiperSlide>
-                            )
-                          })
-                        }
-                      </Swiper>
-                        <hr className='border-black my-5'/>
-                      <Swiper
-                        onSwiper={setThumbsSwiper}
-                        spaceBetween={0}
-                        slidesPerView={4}
-                        freeMode={true}
-                        watchSlidesProgress={true}
-                        modules={[FreeMode, Navigation, Thumbs]}
-                        className="mySwiper"
-                      >
-                       {
-                        product.image.map((item)=>{
-                          return(
-                            <SwiperSlide key={item._key}>
-                            <img src={urlFor(item.asset).width(100).url()} alt={`house`} className='w-full'/>
-                            </SwiperSlide>
-                          )
-                        })
-                       }
-                      </Swiper>
+                    <section className='w-full lg:w-[40%] p-3 grid grid-cols-2 gap-2'>
+                      {product.image.map((item)=>{
+                        return(
+                          <img key={item._key} src={urlFor(item.asset).width(300).url()} alt={`shirt`} className=' mx-auto border border-black'/>
+                        )
+                      })}
                     </section>
                     <section className='container lg:w-[55%]'>
                         <div className='flex justify-between font-semibold lg:text-2xl'>
+                          <section>
                             <p>{product.name}</p>
-                            <p>$ {product.price}</p>
+                            <p className='font-light lg:text-xl'>{product.category}, {product.gender}</p>
+                          </section>
+                            <p>{formattedPrice}</p>
                         </div>
+
                         <hr className='my-3 border-black' />
                         <p>{product.details}</p>
-
-                        
 
                         <section>
                             <p className='font-semibold lg:text-2xl uppercase'>sizes:</p>

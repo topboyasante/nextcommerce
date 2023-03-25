@@ -19,21 +19,61 @@ function Navbar() {
 
 
   const [openCart,setOpenCart] = useState(false)
+  const [openBrands,setOpenBrands] = useState(false)
 
   function toggleCart(){
     setOpenCart(!openCart)
   }
+
+ 
  
   let totalPrice =  0
   cart.forEach((item)=>{
     totalPrice += (item.price) * item.qtyInCart
   })
 
+  const links =[
+    {
+      id:0,
+      name:'Men'
+    },
+    {
+      id:1,
+      name:'Women'
+    },
+    {
+      id:2,
+      name:'Kids'
+    },
+    {
+      id:3,
+      name:'Sale'
+    },
+  ]
+  const brands =[
+    {
+      id:0,
+      name:'Hackett'
+    },
+    {
+      id:1,
+      name:'Audemars Piguet'
+    },
+    {
+      id:2,
+      name:'Balenciaga'
+    },
+    {
+      id:3,
+      name:'Gucci'
+    },
+  ]
+
   return (
       <>
-        <nav className='fixed w-full border-b border-b-black  bg-white z-50 lg:h-[15vh]'>
-            <div className='h-[30%] p-2 text-center text-clash uppercase text-bold bg-black text-white'>Worldwide Shipping Available.</div>
-          <section className='flex flex-col md:flex-row justify-between items-center p-5 h-[70%]'>
+        <nav className='fixed w-full border-b border-b-black  bg-white z-50 h-[23vh] md:h-[20vh]'>
+          <div className='p-2 text-center text-clash uppercase text-bold bg-black text-white'>Worldwide Shipping Available.</div>
+          <section className='flex flex-col md:flex-row justify-between items-center p-5'>
               {/* Logo */}
               <Link href={`/`}>
                   <p className='text-clash font-bold text-2xl'>nextcommerce</p>
@@ -54,6 +94,30 @@ function Navbar() {
                 </button>
               </section>
           </section>
+          <section className='px-5 flex justify-around items-center text-clash'>
+              {
+                links.map((item)=>{
+                  return(
+                    <Link href={`/${item.name}`} key={item.id} className='cursor-pointer'>
+                      <p>{item.name}</p>
+                    </Link>
+                  )
+                })
+              }
+              <p onClick={()=>setOpenBrands(!openBrands)} className='cursor-pointer'>Shop By Brands</p>
+          </section>
+          <section className={openBrands?'opacity-100 p-5 grid grid-cols-3 lg:grid-cols-5 place-items-center gap-3 text-clash bg-white ease duration-500'
+          :'opacity-0 p-5 grid grid-cols-3 lg:grid-cols-5 place-items-center gap-3 text-clash bg-white ease duration-500'}>
+          {
+                brands.map((item)=>{
+                  return(
+                    <Link href={`/brands/${item.name}`}>
+                      <p className='text-sm lg:text-lg'>{item.name}</p>
+                    </Link>
+                  )
+                })
+              }
+          </section>
         </nav>
 
           <section className='relative'>
@@ -69,7 +133,7 @@ function Navbar() {
                     <AiOutlineArrowRight size={30} onClick={toggleCart} className='cursor-pointer hover:scale-105 ease duration-300'/>
                    </section>
                  </section>
-                 <p className='border border-black w-full text-center py-2 uppercase my-3 text-clash font-semibold'>Total : $ {totalPrice}</p>
+                 <p className='border border-black w-full text-center py-2 uppercase my-3 text-clash font-semibold'>Total : {new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(totalPrice)}</p>
                  <section>
                   {
                   cart.length > 0?
@@ -77,8 +141,11 @@ function Navbar() {
                       return(
                         <section className='border border-black text-clash my-2 p-5' key={item.id}>
                           <section className="flex justify-between items-center">
-                            <p>{item.name}</p>
-                            <p>$ {item.price * item.qtyInCart}</p>
+                            <section>
+                              <p>{item.name}</p>
+                              <p>{item.brand}</p>
+                            </section>
+                            <p>{new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(item.qtyInCart*item.price)}</p>
                           </section>
                           <br />
                           <section className='flex justify-between items-center'>

@@ -63,7 +63,7 @@ export default function Home({products}) {
                                   name={item.name}
                                   brand={item.brand}
                                   price={item.price}
-                                  slug={item.slug.current}
+                                  slug={`/product/${item.slug.current}`}
                                   img={urlFor(item.cover_image).width(1000).url()}
                                   />
                                 </SwiperSlide>
@@ -99,7 +99,7 @@ export default function Home({products}) {
                                 name={item.name}
                                 brand={item.brand}
                                 price={item.price}
-                                slug={item.slug.current}
+                                slug={`/product/${item.slug.current}`}
                                 img={urlFor(item.cover_image).width(1000).url()}
                                 />
                               </SwiperSlide>
@@ -135,7 +135,7 @@ export default function Home({products}) {
                                 name={item.name}
                                 brand={item.brand}
                                 price={item.price}
-                                slug={item.slug.current}
+                                slug={`/product/${item.slug.current}`}
                                 img={urlFor(item.cover_image).width(1000).url()}
                                 />
                               </SwiperSlide>
@@ -187,7 +187,7 @@ export default function Home({products}) {
                                   name={item.name}
                                   brand={item.brand}
                                   price={item.price}
-                                  slug={item.slug.current}
+                                  slug={`/product/${item.slug.current}`}
                                   img={urlFor(item.cover_image).width(1000).url()}
                                   />
                                 </SwiperSlide>
@@ -223,7 +223,7 @@ export default function Home({products}) {
                                 name={item.name}
                                 brand={item.brand}
                                 price={item.price}
-                                slug={item.slug.current}
+                                slug={`/product/${item.slug.current}`}
                                 img={urlFor(item.cover_image).width(1000).url()}
                                 />
                               </SwiperSlide>
@@ -259,7 +259,7 @@ export default function Home({products}) {
                                 name={item.name}
                                 brand={item.brand}
                                 price={item.price}
-                                slug={item.slug.current}
+                                slug={`/product/${item.slug.current}`}
                                 img={urlFor(item.cover_image).width(1000).url()}
                                 />
                               </SwiperSlide>
